@@ -81,9 +81,9 @@
 		<p class="resultsDescription">
 			<spring:message code="results.description" />
 		</p>
-		<c:if test="${collisionMessage == null }">
+		<c:if test="${collisionMessage != null }">
 			<div class="collisionMessage">
-				<c:out value="${collisionMessage}" />
+				<img src="<c:url value="resources/images/warning.png"/>"/><c:out value="${collisionMessage}" />
 			</div>
 		</c:if>
 		<table id="resultsTable" class="list">

@@ -1,2 +1,2 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<div id="footer" class="grid_12"><spring:message code="application.footer"/></div>
+<div id="footer" class="grid_12"><spring:message code="application.footer"/> | <a href="mailto:predictor@id3alsolutions.com">Feedback</a></div>
