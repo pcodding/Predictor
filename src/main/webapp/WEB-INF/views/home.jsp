@@ -30,7 +30,7 @@
 				});
 			});
 </script>
-<div class="grid_7">
+<div class="grid_5">
 	<h3>
 		<spring:message code="input.heading" />
 	</h3>
@@ -45,61 +45,61 @@
 			action="<c:url value="/calculateCollision"/>" method="post">
 			<table id="inputParametersTable" class="list">
 				<tr>
-					<td><spring:message code="input.species" /></td>
+					<td><spring:message code="input.species" />
+					</td>
 					<td><select id="species" name="species">
 							<c:forEach var="specie" items="${species}" varStatus="rowCounter">
 								<option>
 									<c:out value="${specie.name}" />
 								</option>
 							</c:forEach>
-					</select>
+					</select></td>
+				</tr>
+				<tr>
+					<td><spring:message code="input.dbh" />
+					</td>
+					<td><input type="text" id="dbh" name="dbh" />
 					</td>
 				</tr>
 				<tr>
-					<td><spring:message code="input.dbh" /></td>
-					<td><input type="text" id="dbh" name="dbh" /></td>
-				</tr>
-				<tr>
-					<td><spring:message code="input.boulevardSize" />
-					</td>
+					<td><spring:message code="input.boulevardSize" /></td>
 					<td><input type="text" id="boulevardSize" name="boulevardSize" />
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><button id="checkFeasibility" type="submit"
-							name="submitButton">
+					<td colspan="2" class="button"><button id="checkFeasibility"
+							type="submit" name="submitButton">
 							<spring:message code="input.checkFeasibility" />
-						</button></td>
+						</button>
+					</td>
 				</tr>
 			</table>
 		</form>
 	</fieldset>
 </div>
-<div class="grid_5">
-	<c:if test="${crownWidth.valueInFeet > 0}">
+<div class="grid_7">
+	<c:if test="${crownWidth.valueInInches > 0}">
 		<h3>Results</h3>
 		<p class="resultsDescription">
 			<spring:message code="results.description" />
 		</p>
+		<div class="resultsContext"><c:out value="${resultsContext}" /></div>
 		<c:if test="${collisionMessage != null }">
 			<div class="collisionMessage">
-				<img src="<c:url value="resources/images/warning.png"/>"/><c:out value="${collisionMessage}" />
+				<img src="<c:url value="resources/images/warning.png"/>" />
+				<c:out value="${collisionMessage}" />
 			</div>
 		</c:if>
 		<table id="resultsTable" class="list">
 			<tr>
 				<th><spring:message code="results.crownWidth" /> (<spring:message
-						code="measurement.feet" />)
-				</th>
+						code="measurement.feet" />)</th>
 				<th><spring:message code="results.rootFlare" /> (<spring:message
-						code="measurement.inches" />)
-				</th>
+						code="measurement.inches" />)</th>
 			</tr>
 			<tr>
-				<td><c:out value="${crownWidth.valueInFeet}" />
-				</td>
-				<td><c:out value="${rootFlare.valueInFeet}" />
-				</td>
+				<td><c:out value="${crownWidth.valueInFeet}" /></td>
+				<td><c:out value="${rootFlare.valueInInches}" /></td>
 			</tr>
 		</table>
 	</c:if>

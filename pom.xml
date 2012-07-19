@@ -136,6 +136,7 @@
 					<stopKey>leaves</stopKey>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<host>127.0.0.1</host>
 							<port>9090</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>

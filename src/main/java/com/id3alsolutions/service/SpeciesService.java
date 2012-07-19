@@ -76,7 +76,7 @@ public class SpeciesService implements InitializingBean {
 					+ "' with dbh of: '" + dbh + "'");
 		}
 
-		return new Measurement(crownWidth.intValue());
+		return new Measurement(crownWidth.intValue() * Measurement.INCHES_PER_FOOT);
 	}
 
 	private Object performDbhCalculation(String calculation, int dbh) {

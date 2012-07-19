@@ -1,6 +1,4 @@
-@import
-	url(http://fonts.googleapis.com/css?family=Simonetta:400,900,400italic)
-	;
+@import url(http://fonts.googleapis.com/css?family=Simonetta:400,900,400italic);
 
 body {
 	font-family: 'Simonetta', cursive;
@@ -34,6 +32,22 @@ legend {
 button {
 	margin: 0px auto;
 	text-align: center;
+}
+
+#inputParametersTable {
+	border: 0px;
+	margin: 0px;
+}
+
+#inputParametersTable td {
+	padding-left: 8px;
+	border-right: 0px;
+	border-bottom: 0px;
+}
+
+#inputParametersTable td.button {
+	text-align: center;
+	padding-top: 9px;
 }
 
 /** List **/

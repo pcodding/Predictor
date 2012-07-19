@@ -57,6 +57,13 @@ public class HomeController {
 						+ " with dbh: " + dbh);
 				request.setAttribute("collisionMessage", collisionMessage);
 			}
+			// Create the message to help people remember what they typed in
+			String resultsContext = messageSource.getMessage(
+					"results.input.details",
+					new String[] { speciesName, Integer.toString(dbh),
+							Integer.toString(boulevardSize) },
+					LocaleContextHolder.getLocale());
+			request.setAttribute("resultsContext", resultsContext);
 		}
 		return "home";
 	}

@@ -34,7 +34,7 @@ public class Measurement {
 	}
 
 	public int getValueInFeet() {
-		return valueInInches.intValue() * INCHES_PER_FOOT;
+		return valueInInches.intValue() / INCHES_PER_FOOT;
 	}
 
 	public Double getValueInInches(int precision) {
@@ -43,5 +43,9 @@ public class Measurement {
 			format += "#";
 		DecimalFormat twoDForm = new DecimalFormat(format);
 		return Double.valueOf(twoDForm.format(valueInInches));
+	}
+	
+	public String toString() {
+		return "Measurement - Inches: " + valueInInches;
 	}
 }
