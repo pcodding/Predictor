@@ -29,6 +29,17 @@
 							});
 				});
 			});
+	
+	function toggleImage(component) {
+		var speciesName = component.options[component.selectedIndex].value;		
+		var speciesImageTag = "<img height='347' width='450' src='" + imageUrls[speciesName] + "'></image>";
+		//document.getElementById("treeImage").innerHTML = speciesImageTag; 
+	}
+	
+	var imageUrls = new Object();
+	<c:forEach var="specie" items="${species}" varStatus="rowCounter">
+	   imageUrls['<c:out value="${specie.name}"/>'] = '<c:out value="${specie.imageUrl}"/>';
+	</c:forEach>
 </script>
 <div class="grid_5">
 	<h3>
@@ -47,12 +58,15 @@
 				<tr>
 					<td><spring:message code="input.species" />
 					</td>
-					<td><select id="species" name="species">
-							<c:forEach var="specie" items="${species}" varStatus="rowCounter">
-								<option>
-									<c:out value="${specie.name}" />
-								</option>
-							</c:forEach>
+					<td><select id="species" name="species" onclick="javascript:toggleImage(this)">
+						<option selected="selected">
+							<spring:message code="input.species.pick"/>
+						</option>
+						<c:forEach var="specie" items="${species}" varStatus="rowCounter">
+							<option>
+								<c:out value="${specie.name}" />
+							</option>
+						</c:forEach>
 					</select></td>
 				</tr>
 				<tr>
@@ -79,7 +93,7 @@
 </div>
 <div class="grid_7">
 	<c:if test="${crownWidth.valueInInches > 0}">
-		<h3>Results</h3>
+		<h3><spring:message code="results.heading"/></h3>
 		<p class="resultsDescription">
 			<spring:message code="results.description" />
 		</p>
@@ -98,9 +112,11 @@
 						code="measurement.inches" />)</th>
 			</tr>
 			<tr>
-				<td><c:out value="${crownWidth.valueInFeet}" /></td>
-				<td><c:out value="${rootFlare.valueInInches}" /></td>
+				<td><c:out value="${crownWidth.valueInFeet}" />&nbsp;<c:out value="${specie.crownWidthError}"/></td>
+				<td><c:out value="${rootFlare.valueInInches}" />&nbsp;<c:out value="${specie.rootFlareError}"/></td>
 			</tr>
 		</table>
 	</c:if>
 </div>
+<div class="clear"></div>
+<div class="grid_12"><div id="treeImage"></div></div>

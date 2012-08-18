@@ -35,15 +35,20 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/calculateCollision", method = RequestMethod.POST)
-	public String calculateCollision(@RequestParam("dbh") int dbh,
+	public String calculateCollision(
+			@RequestParam("dbh") int dbh,
 			@RequestParam("species") String speciesName,
-			@RequestParam("boulevardSize") int boulevardSize,
+			@RequestParam(value = "boulevardSize", required = false) String optionalBoulevardSize,
 			HttpServletRequest request) {
+		int boulevardSize = 0;
+		if (optionalBoulevardSize != null && optionalBoulevardSize.length() >= 1)
+			boulevardSize = Integer.parseInt(optionalBoulevardSize);
 		Iterable<Species> species = speciesService.findAll();
 		request.setAttribute("species", species);
 		String collisionMessage = messageSource.getMessage(
 				"boulevard.collision", null, LocaleContextHolder.getLocale());
 		Species specie = speciesService.findByName(speciesName);
+		request.setAttribute("specie", specie);
 		if (specie != null) {
 			Measurement crownWidth = speciesService.calculateCrownWidthInFeet(
 					specie, dbh);
@@ -52,14 +57,18 @@ public class HomeController {
 					specie, dbh);
 			request.setAttribute("rootFlare", rootFlare);
 			// Check for collision
-			if (boulevardSize <= rootFlare.getValueInInches()) {
+			if (boulevardSize > 0
+					&& boulevardSize <= rootFlare.getValueInFeet()) {
 				logger.info("Found collision for species: " + speciesName
 						+ " with dbh: " + dbh);
 				request.setAttribute("collisionMessage", collisionMessage);
 			}
+			String messageKey = "results.input.withoutblvd.details";
+			if (boulevardSize > 0)
+				messageKey = "results.input.details";
 			// Create the message to help people remember what they typed in
 			String resultsContext = messageSource.getMessage(
-					"results.input.details",
+					messageKey,
 					new String[] { speciesName, Integer.toString(dbh),
 							Integer.toString(boulevardSize) },
 					LocaleContextHolder.getLocale());

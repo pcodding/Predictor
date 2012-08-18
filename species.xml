@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><speciesList><species><name>maple</name><rootFlareCalculation>(5.28*$dbh)^.0635</rootFlareCalculation><crownWidthCalculation>(7.82^.096*$dbh)*12</crownWidthCalculation></species></speciesList>

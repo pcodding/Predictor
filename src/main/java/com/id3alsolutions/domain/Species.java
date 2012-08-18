@@ -19,16 +19,42 @@ public class Species extends Tree {
 	 */
 	@XmlElement(name = "rootFlareCalculation")
 	private String rootFlareCalculation;
+	
+	/**
+	 * 
+	 */
+	@XmlElement(name = "rootFlareError")
+	private String rootFlareError;
+	
 	/**
 	 * 
 	 */
 	@XmlElement(name = "crownWidthCalculation")
 	private String crownWidthCalculation;
-
-	// rootflarealgo -- input is dbh as int, returns inches ---
-	// (5.28*[DBH])^.0635
-	// crownwidthalgo -- input is dbh as int, returns feet
-	// global:: ok - warn - critical threshold (root flare vs blvd width)
+	
+	/**
+	 * 
+	 */
+	@XmlElement(name = "crownWidthError")
+	private String crownWidthError;
+	
+	/**
+	 * 
+	 */
+	@XmlElement(name = "imageUrl")
+	private String imageUrl;
+	
+	/**
+	 * 
+	 */
+	@XmlElement(name = "imageHeight")
+	private String imageHeight;
+	
+	/**
+	 * 
+	 */
+	@XmlElement(name = "imageWidth")
+	private String imageWidth;
 
 	public Species() {
 
@@ -84,5 +110,75 @@ public class Species extends Tree {
 	 */
 	public void setCrownWidthCalculation(String crownWidthCalculation) {
 		this.crownWidthCalculation = crownWidthCalculation;
+	}
+
+	/**
+	 * @return the rootFlareError
+	 */
+	public String getRootFlareError() {
+		return rootFlareError;
+	}
+
+	/**
+	 * @param rootFlareError the rootFlareError to set
+	 */
+	public void setRootFlareError(String rootFlareError) {
+		this.rootFlareError = rootFlareError;
+	}
+
+	/**
+	 * @return the crownWidthError
+	 */
+	public String getCrownWidthError() {
+		return crownWidthError;
+	}
+
+	/**
+	 * @param crownWidthError the crownWidthError to set
+	 */
+	public void setCrownWidthError(String crownWidthError) {
+		this.crownWidthError = crownWidthError;
+	}
+
+	/**
+	 * @return the imageUrl
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	/**
+	 * @param imageUrl the imageUrl to set
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	/**
+	 * @return the imageHeight
+	 */
+	public String getImageHeight() {
+		return imageHeight;
+	}
+
+	/**
+	 * @param imageHeight the imageHeight to set
+	 */
+	public void setImageHeight(String imageHeight) {
+		this.imageHeight = imageHeight;
+	}
+
+	/**
+	 * @return the imageWidth
+	 */
+	public String getImageWidth() {
+		return imageWidth;
+	}
+
+	/**
+	 * @param imageWidth the imageWidth to set
+	 */
+	public void setImageWidth(String imageWidth) {
+		this.imageWidth = imageWidth;
 	}
 }

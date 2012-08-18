@@ -58,7 +58,7 @@ public class SpeciesServiceTest {
 	public void testCalculateCrownWidth() {
 		Measurement crownWidth = speciesService
 				.calculateCrownWidthInFeet(species, 10);
-		assertTrue(crownWidth.getValueInFeet() == 84);
+		assertTrue(crownWidth.getValueInFeet() == 7);
 	}
 
 }
